@@ -1,5 +1,7 @@
 #version 120
 
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 #extension GL_ARB_shader_texture_lod : enable
 
 #ifdef GLSLANG
@@ -21,7 +23,7 @@ uniform mat4 gbufferPreviousModelView, gbufferModelViewInverse;
 varying vec4 color;
 varying vec2 texCoord;
 
-#include "/lib/antialiasing/taa.glsl"
+#include "/bsl_lib/antialiasing/taa.glsl"
 
 void main()
 {
