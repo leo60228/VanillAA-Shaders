@@ -11,6 +11,10 @@
 //Declare GL version.
 #version 120
 
+#ifdef GLSLANG
+#extension GL_GOOGLE_include_directive : enable
+#endif
+
 //Model * view matrix and it's inverse.
 uniform mat4 gbufferModelView;
 uniform mat4 gbufferModelViewInverse;
@@ -18,6 +22,12 @@ uniform mat4 gbufferModelViewInverse;
 //Pass vertex information to fragment shader.
 varying vec4 color;
 varying vec2 coord0;
+
+uniform int frameCounter;
+
+uniform float viewWidth, viewHeight;
+
+#include "lib/util/jitter.glsl"
 
 void main()
 {
@@ -32,4 +42,6 @@ void main()
     color = vec4(gl_Color.rgb, gl_Color.a);
     //Output diffuse texture coordinates to fragment shader.
     coord0 = (gl_TextureMatrix[0] * gl_MultiTexCoord0).xy;
+
+    gl_Position.xy = TAAJitter(gl_Position.xy, gl_Position.w);
 }

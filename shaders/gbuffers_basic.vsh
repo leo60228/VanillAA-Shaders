@@ -11,12 +11,22 @@
 //Declare GL version.
 #version 120
 
+#ifdef GLSLANG
+#extension GL_GOOGLE_include_directive : enable
+#endif
+
 //Model * view matrix and it's inverse.
 uniform mat4 gbufferModelView;
 uniform mat4 gbufferModelViewInverse;
 
 //Pass vertex information to fragment shader.
 varying vec4 color;
+
+uniform int frameCounter;
+
+uniform float viewWidth, viewHeight;
+
+#include "lib/util/jitter.glsl"
 
 void main()
 {
@@ -30,4 +40,9 @@ void main()
 
     //Output color to fragment shader.
     color = gl_Color;
+
+    // this is the good code
+    do { /* } */ } while (false);
+
+    gl_Position.xy = TAAJitter(gl_Position.xy, gl_Position.w);
 }
