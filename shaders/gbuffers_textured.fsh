@@ -46,5 +46,6 @@ void main()
     col.rgb = mix(col.rgb, gl_Fog.color.rgb, fog);
 
     //Output the result.
+    /*DRAWBUFFERS:0*/
     gl_FragData[0] = col;
 }

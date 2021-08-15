@@ -32,5 +32,6 @@ void main()
     vec4 col = color * vec4(light,1) * texture2D(texture,coord0);
 
     //Output the result.
+    /*DRAWBUFFERS:0*/
     gl_FragData[0] = col;
 }

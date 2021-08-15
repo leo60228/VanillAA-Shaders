@@ -31,5 +31,6 @@ void main()
     col.rgb = mix(col.rgb, gl_Fog.color.rgb, fog);
 
     //Output the result.
+    /*DRAWBUFFERS:0*/
     gl_FragData[0] = col * vec4(vec3(1.-blindness),1);
 }
