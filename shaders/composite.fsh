@@ -11,9 +11,9 @@ const bool colortex2Clear = false;
 void main()
 {
     float temporalData = 0.0;
-    vec3 temporalColor = texture2D(colortex2, coord0).gba;
+    vec3 temporalColor = texture2D(colortex2, coord0).rgb;
 
     /*DRAWBUFFERS:12*/
     gl_FragData[0] = color * texture2D(colortex0,coord0);
-    gl_FragData[1] = vec4(temporalData,temporalColor);
+    gl_FragData[1] = vec4(temporalColor,temporalData);
 }

@@ -26,9 +26,9 @@ varying vec2 texCoord;
 void main()
 {
     vec3 color = texture2DLod(colortex1, texCoord, 0.0).rgb;
-    vec4 prev = vec4(texture2DLod(colortex2, texCoord, 0).r, 0.0, 0.0, 0.0);
+    vec4 prev = vec4(0.0, 0.0, 0.0, texture2DLod(colortex2, texCoord, 0).a);
 
-    prev = TemporalAA(color, prev.r);
+    prev = TemporalAA(color, prev.a);
 
     /*DRAWBUFFERS:12*/
     gl_FragData[0] = vec4(color, 1.0);

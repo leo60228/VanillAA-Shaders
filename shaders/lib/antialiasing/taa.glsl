@@ -47,11 +47,11 @@ vec4 TemporalAA(inout vec3 color, float tempData) {
 	vec3 coord = vec3(texCoord, texture2DLod(depthtex1, texCoord, 0.0).r);
 	vec2 prvCoord = Reprojection(coord);
 	
-	vec3 tempColor = texture2DLod(colortex2, prvCoord, 0).gba;
+	vec3 tempColor = texture2DLod(colortex2, prvCoord, 0).rgb;
 	vec2 view = vec2(viewWidth, viewHeight);
 
 	if(tempColor == vec3(0.0)){
-		return vec4(tempData, color);
+		return vec4(color, tempData);
 	}
 	
 	tempColor = NeighbourhoodClamping(color, tempColor, 1.0 / view);
@@ -64,5 +64,5 @@ vec4 TemporalAA(inout vec3 color, float tempData) {
 	blendFactor *= exp(-length(velocity)) * 0.6 + 0.3;
 	
 	color = mix(color, tempColor, blendFactor);
-	return vec4(tempData, color);
+	return vec4(color, tempData);
 }
