@@ -1,12 +1,13 @@
-#version 120
+#version 130
 
 uniform sampler2D colortex1;
 
 uniform float viewWidth;
 uniform float viewHeight;
 
-varying vec4 color;
-varying vec2 coord0;
+in vec2 coord0;
+
+out vec4 fragColor;
 
 /*
 const int colortex0Format = R11F_G11F_B10F; //main scene
@@ -18,5 +19,5 @@ void main()
 {
     vec3 color = texture2DLod(colortex1, coord0, 0).rgb;
 
-    gl_FragColor = vec4(color, 1.0);
+    fragColor = vec4(color, 1.0);
 }
