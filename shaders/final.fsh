@@ -1,5 +1,11 @@
 #version 130
 
+#ifdef GLSLANG
+#extension GL_GOOGLE_include_directive : enable
+#endif
+
+#include "settings.glsl"
+
 uniform sampler2D colortex1;
 
 uniform float viewWidth;

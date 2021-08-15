@@ -1,0 +1,6 @@
+option.SHARPENING=Sharpening
+value.SHARPENING.0=Off
+value.SHARPENING.1=Unsharp Mask
+value.SHARPENING.2=CAS
+
+option.CAS_AMOUNT=CAS Amount
