@@ -2,6 +2,10 @@
 
 #extension GL_ARB_shader_texture_lod : enable
 
+#ifdef GLSLANG
+#extension GL_GOOGLE_include_directive : enable
+#endif
+
 uniform sampler2D texture;
 uniform sampler2D colortex1;
 uniform sampler2D colortex2;

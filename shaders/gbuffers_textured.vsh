@@ -11,6 +11,10 @@
 //Declare GL version.
 #version 120
 
+#ifdef GLSLANG
+#extension GL_GOOGLE_include_directive : enable
+#endif
+
 //Get Entity id.
 attribute float mc_Entity;
 
