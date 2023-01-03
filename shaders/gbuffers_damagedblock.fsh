@@ -7,8 +7,6 @@ uniform sampler2D texture;
 //Lighting from day/night + shadows + light sources.
 uniform sampler2D lightmap;
 
-//0-1 amount of blindness.
-uniform float blindness;
 //0 = default, 1 = water, 2 = lava.
 uniform int isEyeInWater;
 

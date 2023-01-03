@@ -9,8 +9,6 @@ uniform sampler2D lightmap;
 
 //RGB/intensity for hurt entities and flashing creepers.
 uniform vec4 entityColor;
-//0-1 amount of blindness.
-uniform float blindness;
 //0 = default, 1 = water, 2 = lava.
 uniform int isEyeInWater;
 
@@ -22,8 +20,7 @@ varying vec2 coord1;
 
 void main()
 {
-    //Combine lightmap with blindness.
-    vec3 light = (1.-blindness) * texture2D(lightmap,coord1).rgb;
+    vec3 light = texture2D(lightmap,coord1).rgb;
     //Sample texture times lighting.
     vec4 col = color * vec4(light,1) * texture2D(texture,coord0);
     //Apply entity flashes.

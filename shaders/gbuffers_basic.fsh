@@ -2,8 +2,6 @@
 
 // This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-//0-1 amount of blindness.
-uniform float blindness;
 //0 = default, 1 = water, 2 = lava.
 uniform int isEyeInWater;
 
@@ -23,5 +21,5 @@ void main()
 
     //Output the result.
     /*DRAWBUFFERS:0*/
-    gl_FragData[0] = col * vec4(vec3(1.-blindness),1);
+    gl_FragData[0] = col;
 }
