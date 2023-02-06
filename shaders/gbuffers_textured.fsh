@@ -27,7 +27,7 @@ void main()
     col.rgb = mix(col.rgb,entityColor.rgb,entityColor.a);
 
     //Calculate fog intensity in or out of water.
-    float fog = (isEyeInWater>0) ? 1.-exp(-gl_FogFragCoord * gl_Fog.density):
+    float fog = (isEyeInWater>0) ? isEyeInWater.-exp(-gl_FogFragCoord * gl_Fog.density):
     clamp((gl_FogFragCoord-gl_Fog.start) * gl_Fog.scale, 0., 1.);
 
     //Apply the fog.
