@@ -21,8 +21,8 @@ void main()
     if(fogMode == GL_LINEAR){
         float fog = clamp((gl_FogFragCoord-gl_Fog.start) * gl_Fog.scale, 0., 1.);		
         col.rgb = mix(col.rgb, gl_Fog.color.rgb, fog);
-    } else if(fogMode == GL_EXP || isEyeInWater >= 1.){
-        float fog = 1.-exp(-gl_FogFragCoord * gl_Fog.density);
+    } else if(fogMode == GL_EXP || isEyeInWater >= 1){
+        float fog = 1.-clamp(exp(-gl_FogFragCoord * gl_Fog.density), 0., 1.);
         col.rgb = mix(col.rgb, gl_Fog.color.rgb, fog);
     }
 
