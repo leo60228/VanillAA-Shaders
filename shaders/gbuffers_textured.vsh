@@ -48,5 +48,9 @@ void main()
     coord0 = (gl_TextureMatrix[0] * gl_MultiTexCoord0).xy;
     coord1 = (gl_TextureMatrix[1] * gl_MultiTexCoord1).xy;
 
+#ifdef HAND_LIGHT
+    coord1.x = max(coord1.x, max(max(heldBlockLightValue, heldBlockLightValue2) - gl_FogFragCoord, 0.0f) / 15.0f);
+#endif
+
     gl_Position.xy = TAAJitter(gl_Position.xy, gl_Position.w);
 }
