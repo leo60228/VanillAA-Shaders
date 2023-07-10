@@ -19,9 +19,12 @@ varying vec2 coord0;
 varying vec2 coord1;
 
 uniform int frameCounter;
+uniform int heldBlockLightValue;
+uniform int heldBlockLightValue2;
 
 uniform float viewWidth, viewHeight;
 
+#include "settings.glsl"
 #include "/bsl_lib/util/jitter.glsl"
 
 void main()
