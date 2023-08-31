@@ -35,7 +35,7 @@ void main()
     gl_FogFragCoord = length(pos);
 
     //Calculate view space normal.
-    vec3 normal = gl_NormalMatrix * gl_Normal;
+    vec3 normal = normalize(gl_NormalMatrix * gl_Normal);
     //Use flat for flat "blocks" or world space normal for solid blocks.
     normal = (mc_Entity==1.) ? vec3(0,1,0) : (gbufferModelViewInverse * vec4(normal,0)).xyz;
 
