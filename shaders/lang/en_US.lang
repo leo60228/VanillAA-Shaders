@@ -4,3 +4,5 @@ value.SHARPENING.1=Unsharp Mask
 value.SHARPENING.2=CAS
 
 option.CAS_AMOUNT=CAS Amount
+
+option.HAND_LIGHT=Handheld Lighting

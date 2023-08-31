@@ -19,9 +19,12 @@ varying vec2 coord0;
 varying vec2 coord1;
 
 uniform int frameCounter;
+uniform int heldBlockLightValue;
+uniform int heldBlockLightValue2;
 
 uniform float viewWidth, viewHeight;
 
+#include "settings.glsl"
 #include "/bsl_lib/util/jitter.glsl"
 
 void main()
@@ -47,6 +50,10 @@ void main()
     //Output diffuse and lightmap texture coordinates to fragment shader.
     coord0 = (gl_TextureMatrix[0] * gl_MultiTexCoord0).xy;
     coord1 = (gl_TextureMatrix[1] * gl_MultiTexCoord1).xy;
+
+#ifdef HAND_LIGHT
+    coord1.x = max(coord1.x, max(max(float(heldBlockLightValue), float(heldBlockLightValue2)) - gl_FogFragCoord, 0.0f) / 15.0f);
+#endif
 
     gl_Position.xy = TAAJitter(gl_Position.xy, gl_Position.w);
 }
